@@ -1,0 +1,42 @@
+# [PackageDev] target_format: plist, ext: tmLanguage
+name: LS-DYNA
+scopeName: source.k
+fileTypes: [k]
+uuid: 816b4b30-23b7-4c21-8373-4bad1ae6a531
+
+patterns:
+- comment: Comments beginning with "$#".
+  name: comment.line.double-star.k
+  match: (\$).*$\n?
+  captures:
+    '1': {name: punctuation.definition.comment.k}
+
+- name: constant.numeric.complex.k
+  match: \b(?i:(((\d+(\.(?=[^a-zA-Z_])\d*)?|(?<=[^0-9a-zA-Z_])\.\d+)(e[\-\+]?\d+)?))J)
+
+- name: constant.numeric.float.k
+  match: \b(?i:(\d+\.\d*(e[\-\+]?\d+)?))(?=[^a-zA-Z_])
+
+- name: constant.numeric.float.k
+  match: (?<=[^0-9a-zA-Z_])(?i:(\.\d+(e[\-\+]?\d+)?))
+
+- name: constant.numeric.float.k
+  match: \b(?i:(\d+e[\-\+]?\d+))
+
+- name: constant.numeric.integer.decimal.k
+  match: \b([1-9]+[0-9]*|0)
+
+- name: string.quoted.single.single-line.k
+  match: (?<!')(')(('))(?!')
+  '1': {name: punctuation.definition.string.begin.k}
+  '2': {name: punctuation.definition.string.end.k}
+  '3': {name: meta.empty-string.single.k}
+
+- comment: LS-DYNA keywords preceded by asterisk.
+  name: keyword.k
+  match: (\*).*$\n?
+
+
+- comment: Catch user defined parameters (such as ELSET names, etc.)
+  name: string.quoted.single.k
+  match: \w
