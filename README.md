@@ -1,2 +1,4 @@
 # LS-DYNA-Sublime
-Syntax hightlighting for LS-DYNA
+Sublime Text syntax highlighting for the LS-DYNA finite element software.
+
+Basic functionality so far includes keyword highlighting and commenting/uncommenting.
